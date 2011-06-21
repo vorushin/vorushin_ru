@@ -1,0 +1,6 @@
+Автор - {{ comment.user_name }}, {{ comment.user_url }}
+
+{{ comment.comment }}
+
+Ссылка на статью - {{ comment.content_object.get_full_absolute_url }}
+Удалить спам - {{ delete_spam_url }}

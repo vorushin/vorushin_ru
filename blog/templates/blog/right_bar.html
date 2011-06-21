@@ -1,0 +1,18 @@
+<div class="right_bar">
+    <h3>Популярные статьи</h3>
+    {% for entry in popular_entries %}
+        <h4><a href="{{ entry.get_absolute_url }}" class="show_visited">{{ entry.title }}</a></h4>
+    {% endfor %}
+
+    <h3>Об авторе</h3>
+    <p>
+        Меня зовут Роман Ворушин. Я отец двух дочерей и страстный программист.</a>
+    </p>
+    <p>
+        С командой киборгов сделал <a href="http://risovaska.ru">Рисоваську</a>, а потом еще
+        <a href="https://homebank.moskb.ru/">много</a> <a href="http://maps.westernunion.ru/">веб</a>-<a href="http://serebronepala.ru/">проектов</a>. Сейчас работаю в <a href="http://labs.sciworth.com/">Sciworth Labs</a>.
+    </p>
+    <p>
+        <a href="mailto:roman.vorushin@gmail.com">roman.vorushin@gmail.com</a>
+    </p>
+</div>

@@ -1,0 +1,32 @@
+{% extends "blog/base.html" %}
+
+{% block title %}{{ item.title|safe }} - Блог Романа Ворушина{% endblock %}
+
+{% block extrahead %}
+    <meta property="og:title" content="{{ item.title }}"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:url" content="{{ item.get_full_absolute_url }}"/>
+    <meta property="og:site_name" content="Блог Романа Ворушина"/>
+{% endblock %}
+
+{% block feedicon %}{% endblock %}
+
+{% block body %}
+<div class="single_column">
+    <h2>
+        <a href="{{ item.url }}">{{ item.title|safe }}</a>
+        <span class="link_date">{{ item.pub_date|date }}</span>
+    </h2>
+    <div style="margin-bottom: 20px;">
+        <p>{{ item.text|safe }}</p>
+        <a href="{{ item.url }}">{{ item.url }}</a>
+    </div>
+
+    {% include "blog/twitter_button.html" %}
+
+    {% include "blog/comments.html" %}
+</div>
+
+{% include "blog/right_bar.html" %}
+
+{% endblock body %}

@@ -1,0 +1,87 @@
+{% load openid %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="google-site-verification" content="6olFzzM0gDFg65cZ38isnlLDtwokxEkr6JssAfMaUFE" />
+<meta name='yandex-verification' content='6decb5ff89d187ac' />
+
+<meta name="keywords" content="python, django, web, javascript, программирование, блог">
+
+<link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon">
+
+<title>{% block title %}{% endblock %}</title>
+
+{% load compress %}
+{% compress css %}
+<link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/main.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/highlight/styles/vs.css"/>
+{% endcompress %}
+
+{% openid_links %}
+
+<link rel="alternate" type="application/atom+xml" title="Блог - свежие записи и ссылки" href="/feeds/entries/"/>
+{% if tag %}
+<link rel="alternate" type="application/atom+xml" title="Категория '{{ tag.title }}' - свежие записи и ссылки" href="/feeds/tag/{{ tag.slug }}/"/>
+{% endif %}
+
+<script type="text/javascript" src="{{ STATIC_URL }}js/highlight.pack.js"></script>
+<script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+    var RecaptchaOptions = {
+        lang : 'ru',
+        theme : 'white'
+    };
+</script>
+</script>
+
+<link rel="pingback" href="http://vorushin.ru{% url pingback %}">
+
+{% block extrahead %}{% endblock %}
+
+</head>
+<body>
+
+{% block header %}
+<div id="header">
+    <h2 id="top_title">
+        <a href="{% url blog.views.index %}">Блог Романа Ворушина</a>
+        {% if subtitle %}
+            &rarr; <a href="{{ subtitle_url }}">{{ subtitle|capfirst }}</a>
+        {% endif %}
+
+        {% block feedicon %}
+            {% if tag %}
+            <a href="/feeds/tag/{{ tag.slug }}/">
+                <img src="{{ STATIC_URL }}img/feed-icon-28x28.png" id="feed_icon" alt="Категория '{{ tag.title }}' - свежие записи и ссылки (Atom)">
+            </a>
+            {% else %}
+            <a href="/feeds/entries/">
+                <img src="{{ STATIC_URL }}img/feed-icon-28x28.png" id="feed_icon" alt="Блог - свежие записи и ссылки (Atom)">
+            </a>
+            {% endif %}
+        {% endblock feedicon %}
+    </h2>
+    <p>Программирование, веб, <a href="{% url blog.views.tag 'python' %}">python</a>, <a href="{% url blog.views.tag 'django' %}">django</a> и многое-многое другое</p>
+</div>
+{% endblock header %}
+
+{% block body %}{% endblock %}
+
+{# Google Analytics #}
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-11723567-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+{# End of Google Analytics #}
+
+</body>
+</html>

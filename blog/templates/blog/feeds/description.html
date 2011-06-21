@@ -1,0 +1,6 @@
+{% if obj.url %} 
+<p>{{ obj.text|safe }}</p>
+<a href="{{ obj.url }}">{{ obj.url }}</a>
+{% else %}
+<p>{{ obj.text|safe }}</p>
+{% endif %}

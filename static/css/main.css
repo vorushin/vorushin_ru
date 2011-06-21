@@ -1,0 +1,252 @@
+@CHARSET "UTF-8";
+
+/*
+    reset reloaded from meyerweb.com
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+body {
+	line-height: 1;
+	color: black;
+	background: white;
+}
+ol, ul {
+	list-style: none;
+}
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+caption, th, td {
+	text-align: left;
+	font-weight: normal;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: "";
+}
+blockquote, q {
+	quotes: "" "";
+}
+
+/***********************
+     MAIN LAYOUT
+***********************/
+
+html {
+    font-family: trebuchet, Verdana, Geneva;
+	/*font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;*/
+    /*font-size: 0.8em;*/
+    font-size: 13px;
+    line-height: 1.4em;
+    background-color: white;
+    color: black;
+    margin: 0 auto;
+    padding: 0 5%;
+    min-width: 920px;
+    max-width: 920px;
+    line-height: 18px;
+    position: relative; /* special for IE and floats */
+}
+#entries {
+    float: left;
+    width: 600px;
+}
+.single_column {
+    float: left;
+    width: 700px;
+}
+.right_bar {
+    margin-left: 720px;
+}
+#links {
+    /*float: left;*/
+    /*width: 280px;*/
+    margin-left: 640px;
+}
+p {
+    line-height: 1.4em;
+    margin-top: 0.8em;
+    margin-bottom: 0.8em;
+}
+a, a:hover, a:visited {
+    color: #006E2E;
+}
+a.entry_title {
+    color: black;
+    text-decoration: none;
+}
+a.entry_title:hover {
+    color: #006E2E;
+    text-decoration: underline;
+}
+a.show_visited:visited {
+    color: #777;
+}
+/*a .title, a:visited .title {
+    color: black;
+}
+a:hover .title {
+    color: #006E2E;
+}*/
+h1, h2, h3, h4 {
+    font-family: Tahoma, Verdana, Georgia, serif;
+    font-weight: normal;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.5em;
+    margin-top: 1.3em;
+    margin-bottom: 0.4em;
+}
+h3 {
+    font-size: 1.5em;
+    line-height: 1.2em;
+    margin-top: 0.9em;
+    margin-bottom: 0.3em;}
+h4 {
+    font-size: 1.25em;
+    line-height: 1.2em;
+    margin-top: 0.6em;
+    margin-bottom: 0.3em;
+}
+blockquote {
+    margin-left: 20px;
+    padding-left: 4px;
+    border-left: 1px solid #BBB;
+    font-size: 90%;
+}
+pre {
+    line-height: 1.25em;
+    margin-top: 0.8em;
+    margin-bottom: 0.8em;
+    font-family:Consolas,"Andale Mono","Liberation Mono",Courier,monospace;
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+em {
+    font-style: italic;
+}
+strong {
+    font-weight: bold;
+    color: #222;
+}
+ul {
+    list-style-type: circle;
+    list-style-position: outside;
+    margin-left: 1.5em;
+    line-height: 1.4em;
+    margin-top: 0.8em;
+    margin-bottom: 0.8em;
+}
+ul li {
+    margin-bottom: 0.4em;
+}
+ol {
+    list-style: decimal;
+    margin-left: 1.5em;
+    line-height: 1.4em;
+    margin-top: 0.8em;
+    margin-bottom: 0.8em;
+}
+ol li {
+    margin-bottom: 0.7em;
+}
+img .entry {
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 2em;
+}
+#feed_icon {
+    float: right;
+}
+#header h2, #header p {
+    margin-bottom: 0em;
+}
+#links p {
+    display: inline;
+}
+.entry_date {
+    font-size: 0.85em;
+    color: #aaa;
+}
+.link_date {
+    font-size: 0.9em;
+    color: #888;
+}
+.link_comments_count {
+    /*color: #888;*/
+}
+.comment_date {
+    color: #888;
+    font-size: 16px;
+}
+
+/***********************
+     ENTRY COMMENTS
+***********************/
+#add_comment {
+    border-style: dotted;
+    border-width: 1px 0 0 0;
+    border-color: black;
+    padding-top: 0px;
+}
+#add_comment_form {
+    margin-bottom: 24px;
+}
+.vorushin_comment {
+    background: #ddd;
+}
+#id_name, #id_email, #id_url, #id_comment {
+    width: 450px;
+}
+#id_comment {
+    height: 240px;
+}
+#id_honeypot {
+    display: none;
+}
+#id_submit {
+    width: 30%;
+    margin-left: 35%;
+}
+.gray {
+    color: #888;
+    font-size: 12px;
+}
+.add_comment_table td{
+    vertical-align: middle;
+    padding: 0.5% 0%;
+}
+.add_comment_table .label {
+    width: 40%;
+}
+ul.errorlist {
+    color: red;
+    font-weight: bold;
+}

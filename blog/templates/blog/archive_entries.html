@@ -1,0 +1,31 @@
+{% extends "blog/base.html" %}
+{% load comments %}
+
+{% block title %}Архив записей - Блог Романа Ворушина{% endblock %}
+
+{% block feedicon %}{% endblock %}
+
+{% block body %}
+
+<div class="single_column">
+{% for e in entries %}
+    <h2>
+        <a href="{{ e.get_absolute_url }}" class="entry_title" rel="bookmark">{{ e.title|safe }}</a>
+        {% ifequal e.status 2 %} (DRAFT){% endifequal %}{% ifequal e.status 3 %} (HIDDEN){% endifequal %}
+        <span class="entry_date">{{ e.pub_date|date }}</span>
+    </h2>
+    <div class="entry">{{ e.short_text|safe }}</div>
+    <p>
+        {% if e.text != e.short_text %}
+            <h4><a href="{{ e.get_absolute_url }}">Читать дальше &rarr;</a></h4>
+        {% endif %}
+    </p>
+    <h4 class="comments">
+    <a href="{{ e.get_absolute_url }}#comments">
+        Комментарии: {{ e.comments_count }}
+    </a>
+    </h4>
+{% endfor %}
+</div>
+
+{% endblock body %}

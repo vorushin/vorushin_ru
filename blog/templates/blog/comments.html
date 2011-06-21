@@ -1,0 +1,43 @@
+{% load cache %}
+{% load comments %}
+
+{% get_comment_count for item as comment_count %}
+{% get_comment_list for item as comment_list %}
+
+<h3 id="comments">Комментарии: {{ comment_count }}</h3>
+{% for comment in comment_list %}
+<div id="comment_{{ comment.id }}" {% ifequal comment.user.username 'vorushin' %}class="vorushin_comment"{% endifequal %}>
+<h4>
+    {% if comment.user_url %}<a href="{{ comment.user_url }}">{% endif %}{{ comment.user_name }}{% if comment.user_url %}</a>{% endif %}
+    <span class="comment_date">{{ comment.submit_date|date }}</span>
+</h4>
+{{ comment.comment|urlize|linebreaks }}</div>
+{% endfor %}
+
+<h3 id="add_comment">Добавить комментарий:</h3>
+<form action="#add_comment" method="POST" id="add_comment_form" {% ifequal user.username 'vorushin' %}class="vorushin_comment"{% endifequal %}>
+    {% csrf_token %}
+    <table class="add_comment_table">
+        <tr><td class="label"><label for="id_name">Имя <span class="gray">(настоящее, плз)</span>:</label></td>
+            <td>{{ form.name.errors }}{{ form.name }}</td></tr>
+        <tr><td class="label"><label for="id_email">E-mail <span class="gray">(никто его не узнает)</span>:</label></td>
+            <td>{{ form.email.errors }}{{ form.email }}</td></tr>
+        <tr><td class="label"><label for="id_url">Сайт <span class="gray">(что интересного ты пишешь)</span>:</label></td>
+            <td>{{ form.url.errors }}{{ form.url }}</td></tr>
+        <tr><td class="label"><label for="id_comment">Текст комментария:</label><br/><span class="gray">Никаких html-тэгов, плз. Все ссылки станут активными, все переводы строк будут заменены на &lt;br&gt;</span></td><td>{{ form.comment.errors }}{{ form.comment }}</td></tr>
+        <tr><td class="label"></td>
+            <td>
+                {{ form.recaptcha_challenge_field.errors }}
+                <script type="text/javascript"  src="http://www.google.com/recaptcha/api/challenge?k={{ form.public_key }}"></script>
+                <noscript>
+                    <iframe src="http://www.google.com/recaptcha/api/noscript?k={{ form.public_key }}"
+                            height="300" width="500" frameborder="0"></iframe><br>
+                    <textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+                    <input type="hidden" name="recaptcha_response_field" value="manual_challenge">
+                </noscript>
+            </td></tr>
+    </table>
+    {# <p>{{ form.honeypot }}{{ form.content_type }}{{ form.object_pk }}{{ form.timestamp }}{{ form.security_hash }}</p> #}
+    {# <input type="hidden" name="next" value="{{ next_url }}" /> #}
+    <input type="submit" name="submit" class="submit-post" value="Отправить комментарий" id="id_submit" />
+</form>

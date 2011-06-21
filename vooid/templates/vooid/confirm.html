@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<head>
+  <title>Подтверждение OpenID-логина</title>
+<body>
+<p>Вход на {{ url }}:
+<form action="{% url vooid_confirm %}" method="post">
+  <button name="always">Подтвердить и Запомнить</button> 
+  <button name="yes">Подтвердить</button> 
+  <button name="cancel">Отмена</button>
+</form>

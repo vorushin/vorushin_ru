@@ -1,0 +1,35 @@
+LOCAL_DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'vorushin_ru',
+        'USER': 'user',
+        'PASSWORD': 'pass',
+        'HOST': '',
+        'PORT': '',
+    }
+}
+
+ADDITIONAL_APPS = (
+    'debug_toolbar',
+    'django_extensions',
+)
+
+ADDITIONAL_MIDDLEWARE = (
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+)
+
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'your.email@gmail.com'
+EMAIL_HOST_PASSWORD = 'your.pass'
+
+AKISMET_KEY = 'your-key'
+
+RECAPTCHA_PUBLIC_KEY = 'your-key'
+RECAPTCHA_PRIVATE_KEY = 'your-key'
+
+DEBUG = True
+COMPRESS = True
+COMPRESS_YUI_BINARY = 'java -jar /Users/vorushin/Java/yuicompressor-2.4.2.jar'
+COMPRESS_CSS_FILTERS = ['compressor.filters.yui.YUICSSFilter']

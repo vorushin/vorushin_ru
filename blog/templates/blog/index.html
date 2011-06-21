@@ -1,0 +1,46 @@
+{% extends "blog/base.html" %}
+{% load comments %}
+
+{% block title %}
+    {% if tag %}{{ tag.title|capfirst }} - {% endif %}
+    Блог Романа Ворушина
+{% endblock %}
+
+{% block extrahead %}
+    <meta name="description" content="Блог о программировании, веб, python, django, javascript">
+{% endblock extrahead %}
+
+{% block body %}
+<div id="entries">
+{% for e in entries %}
+    <h2>
+        <a href="{{ e.get_absolute_url }}" class="entry_title" rel="bookmark">{{ e.title|safe }}</a>
+        {% ifequal e.status 2 %} (DRAFT){% endifequal %}{% ifequal e.status 3 %} (HIDDEN){% endifequal %}
+        <span class="entry_date">{{ e.pub_date|date }}</span>
+    </h2>
+    <div class="entry">{{ e.short_text|safe }}</div>
+    {% if e.text != e.short_text %}
+        <h4><a href="{{ e.get_absolute_url }}">
+            Читать дальше &rarr;
+        </a></h4>
+    {% endif %}
+{% endfor %}
+<h2><a href="{% url blog.views.archive_entries %}">Архив статей</a></h2>
+</div>
+
+<div id="links">
+<h2>Интересные ссылки</h2>
+{% for l in links %}
+    <h4>
+        <a href="{{ l.url }}">{{ l.title }}</a>
+        <span class="link_date">{{ l.pub_date|date }}</span>
+    </h4>
+    {{ l.text|safe|urlize }}
+    <a href="{{ l.get_absolute_url }}#comments">
+        <span class="link_comments_count">({{ l.comments_count }})</span>
+    </a>
+{% endfor %}
+<h2><a href="{% url blog.views.archive_links %}">Архив ссылок</a></h2>
+</div>
+
+{% endblock body %}

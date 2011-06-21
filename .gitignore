@@ -1,0 +1,9 @@
+.hg/
+.hgignore
+
+*.pyc
+*.log
+.DS_Store
+data.json
+local_settings.py
+static/CACHE/
