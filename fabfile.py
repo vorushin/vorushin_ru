@@ -27,4 +27,4 @@ def fetch_data():
                           '--exclude contenttypes > data.json')
     get(PROJECT_DIR + '/data.json', 'data.json')
     local('./manage.py flush --noinput')
-    local('./manage.py loaddata data.json --noinput')
+    local('./manage.py loaddata data.json')
