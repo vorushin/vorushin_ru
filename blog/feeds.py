@@ -21,7 +21,7 @@ class LatestItems(MyFeed):
     description_template = 'blog/feeds/description.html'
 
     def items(self, obj):
-        objects = Entry.live.all()[:5] + Link.objects.all()[:5]
+        objects = list(Entry.live.all()[:5]) + list(Link.objects.all()[:5])
         return sorted(objects, key=lambda obj: -obj.pub_date)
 
 
@@ -42,6 +42,6 @@ class TaggedItems(Feed):
                u'Романа Ворушина' % obj.title
 
     def items(self, obj):
-        objects = Entry.live.filter(tags__in=[obj])[:5] + \
-                  Link.objects.filter(tags__in=[obj])[:5]
+        objects = list(Entry.live.filter(tags__in=[obj])[:5]) + \
+                  list(Link.objects.filter(tags__in=[obj])[:5])
         return sorted(objects, key=lambda obj: -obj.pub_date)
