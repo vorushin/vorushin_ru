@@ -22,7 +22,7 @@ class LatestItems(MyFeed):
 
     def items(self, obj):
         objects = list(Entry.live.all()[:5]) + list(Link.objects.all()[:5])
-        return sorted(objects, key=lambda obj: -obj.pub_date)
+        return sorted(objects, cmp=lambda i1, i2: -cmp(i1, i2))
 
 
 class TaggedItems(Feed):
@@ -41,7 +41,11 @@ class TaggedItems(Feed):
         return u'Свежие записи и интересные ссылки из категории "%s" блога ' \
                u'Романа Ворушина' % obj.title
 
+    def link(self, obj):
+        return obj.get_absolute_url()
+
     def items(self, obj):
         objects = list(Entry.live.filter(tags__in=[obj])[:5]) + \
                   list(Link.objects.filter(tags__in=[obj])[:5])
-        return sorted(objects, key=lambda obj: -obj.pub_date)
+        return sorted(objects, cmp=lambda i1, i2: -cmp(i1, i2))
+

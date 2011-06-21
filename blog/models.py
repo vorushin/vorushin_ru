@@ -136,4 +136,4 @@ class Link(models.Model, FullAbsoluteUrlMix):
                 pass
 
     def get_absolute_url(self):
-        return reverse('blog-link', args=[self.id])
+        return reverse('blog.views.link', args=[self.id])
