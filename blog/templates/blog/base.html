@@ -56,11 +56,11 @@
         {% block feedicon %}
             {% if tag %}
             <a href="/feeds/tag/{{ tag.slug }}/">
-                <img src="{{ STATIC_URL }}img/feed-icon-28x28.png" id="feed_icon" alt="Категория '{{ tag.title }}' - свежие записи и ссылки (Atom)">
+                <img src="{{ STATIC_URL }}img/feed-icon-14x14.png" id="feed_icon" alt="Категория '{{ tag.title }}' - свежие записи и ссылки (Atom)">
             </a>
             {% else %}
             <a href="/feeds/entries/">
-                <img src="{{ STATIC_URL }}img/feed-icon-28x28.png" id="feed_icon" alt="Блог - свежие записи и ссылки (Atom)">
+                <img src="{{ STATIC_URL }}img/feed-icon-14x14.png" id="feed_icon" alt="Блог - свежие записи и ссылки (Atom)">
             </a>
             {% endif %}
         {% endblock feedicon %}

@@ -183,7 +183,7 @@ img .entry {
     margin-bottom: 2em;
 }
 #feed_icon {
-    float: right;
+    margin-left: 0.5em;
 }
 #header h2, #header p {
     margin-bottom: 0em;
