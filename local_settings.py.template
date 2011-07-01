@@ -18,6 +18,13 @@ ADDITIONAL_MIDDLEWARE = (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
+TEMPLATE_LOADERS = (
+    ('django.template.loaders.cached.Loader', (
+        'django.template.loaders.filesystem.Loader',
+        'django.template.loaders.app_directories.Loader',
+    )),
+)
+
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST = 'smtp.gmail.com'

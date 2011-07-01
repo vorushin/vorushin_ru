@@ -89,11 +89,10 @@ SECRET_KEY = '=9x)c&_c^uy&%o#r=jxrpd($^6-l!4xgzcina%wbul8s1$r9qc'
 
 
 TEMPLATE_LOADERS = (
-    ('django.template.loaders.cached.Loader', (
-        'django.template.loaders.filesystem.Loader',
-        'django.template.loaders.app_directories.Loader',
-    )),
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
 )
+
 
 MIDDLEWARE_CLASSES = (
 #    'django.middleware.csrf.CsrfViewMiddleware',
