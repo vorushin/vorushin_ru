@@ -199,8 +199,8 @@ img .entry {
     font-size: 0.9em;
     color: #888;
 }
-.link_comments_count {
-    /*color: #888;*/
+a.comments_count {
+    color: #888;
 }
 .comment_date {
     color: #888;

@@ -38,9 +38,7 @@
     </h4>
     {{ l.text|safe|urlize }}
     <br/>
-    <a href="{{ l.get_absolute_url }}#disqus_thread">
-        <span class="link_comments_count"></span>
-    </a>
+    <a href="{{ l.get_absolute_url }}#disqus_thread" class="comments_count"></a>
 {% endfor %}
 <h2><a href="{% url blog.views.archive_links %}">Архив ссылок</a></h2>
 </div>
