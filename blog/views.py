@@ -25,7 +25,7 @@ def index(request):
         entries = Entry.objects.all()
     else:
         entries = Entry.live.all()
-    links = Link.objects.annotate(comments_count=Count('comments'))
+    links = Link.objects.all()
     return render(request,
                   'blog/index.html',
                   {'entries': entries[:10], 'links': links[:10]})
@@ -36,7 +36,6 @@ def archive_entries(request):
         entries = Entry.objects.all()
     else:
         entries = Entry.live.all()
-    entries = entries.annotate(comments_count=Count('comments'))
     return render(request,
                   'blog/archive_entries.html',
                   {'entries': entries,
@@ -45,10 +44,9 @@ def archive_entries(request):
 
 
 def archive_links(request):
-    links = Link.objects.annotate(comments_count=Count('comments'))
     return render(request,
                   'blog/archive_links.html',
-                  {'links': links,
+                  {'links': Link.objects.all(),
                    'subtitle': 'Архив ссылок',
                    'subtitle_url': reverse(archive_links)})
 

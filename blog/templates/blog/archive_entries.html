@@ -21,11 +21,11 @@
         {% endif %}
     </p>
     <h4 class="comments">
-    <a href="{{ e.get_absolute_url }}#comments">
-        Комментарии: {{ e.comments_count }}
-    </a>
+    <a href="{{ e.get_absolute_url }}#disqus_thread"></a>
     </h4>
 {% endfor %}
 </div>
+
+{% include "blog/comments_count.html" %}
 
 {% endblock body %}

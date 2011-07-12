@@ -37,11 +37,14 @@
         <span class="link_date">{{ l.pub_date|date }}</span>
     </h4>
     {{ l.text|safe|urlize }}
-    <a href="{{ l.get_absolute_url }}#comments">
-        <span class="link_comments_count">({{ l.comments_count }})</span>
+    <br/>
+    <a href="{{ l.get_absolute_url }}#disqus_thread">
+        <span class="link_comments_count"></span>
     </a>
 {% endfor %}
 <h2><a href="{% url blog.views.archive_links %}">Архив ссылок</a></h2>
 </div>
+
+{% include "blog/comments_count.html" %}
 
 {% endblock body %}
