@@ -74,7 +74,7 @@ def entry(request, id, slug):
     try:
         entry = entries.get(id=id)
     except Entry.DoesNotExist:
-        return Http404
+        raise Http404
     form = CommentForm(request)
     if request.method == 'POST':
         form = CommentForm(request, request.POST)
