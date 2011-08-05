@@ -137,6 +137,7 @@ blockquote {
     padding-left: 4px;
     border-left: 1px solid #BBB;
     font-size: 90%;
+    line-height: 1.25em;
 }
 pre {
     line-height: 1.25em;
