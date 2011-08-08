@@ -21,10 +21,14 @@ def deploy():
         run('restart ' + PROJECT_NAME)
 
 
-def fetch_data():
+import settings
+db_settings = settings.DATABASES['default']
+
+
+def fetch_db():
     with cd(PROJECT_DIR):
-        run_in_virtualenv('./manage.py dumpdata --indent 4 '
-                          '--exclude contenttypes > data.json')
-    get(PROJECT_DIR + '/data.json', 'data.json')
+        run('mysqldump %(NAME)s -u %(BACKUP_USER)s -p%(BACKUP_PASSWORD)s '
+            '--skip-lock-tables > dump.sql' % db_settings)
+        get('dump.sql', 'dump.sql')
     local('./manage.py flush --noinput')
-    local('./manage.py loaddata data.json')
+    local('./manage.py dbshell < dump.sql')
