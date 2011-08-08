@@ -13,6 +13,10 @@ class MyFeed(Feed):
     author_link = 'http://vorushin.ru/'
 
 
+def pub_date_desc(i1, i2):
+    return -cmp(i1.pub_date, i2.pub_date)
+
+
 class LatestItems(MyFeed):
     title = u'Блог Романа Ворушина'
     link = '/blog/'
@@ -22,7 +26,7 @@ class LatestItems(MyFeed):
 
     def items(self, obj):
         objects = list(Entry.live.all()[:5]) + list(Link.objects.all()[:5])
-        return sorted(objects, cmp=lambda i1, i2: -cmp(i1, i2))
+        return sorted(objects, cmp=pub_date_desc)
 
 
 class TaggedItems(Feed):
@@ -47,5 +51,4 @@ class TaggedItems(Feed):
     def items(self, obj):
         objects = list(Entry.live.filter(tags__in=[obj])[:5]) + \
                   list(Link.objects.filter(tags__in=[obj])[:5])
-        return sorted(objects, cmp=lambda i1, i2: -cmp(i1, i2))
-
+        return sorted(objects, cmp=pub_date_desc)
